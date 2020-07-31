@@ -1,0 +1,16 @@
+{
+    "categoria": [
+        {
+            "id": 1,
+            "nome": "Front end",
+            "descricao": "Parte front end da app",
+            "cor": "#cdb1ff"
+        },
+        {
+            "id": 2,
+            "nome": "Back end",
+            "descricao": "Parte Back end da app",
+            "cor": "#cdb1ff"
+        }
+    ]
+}
