@@ -1,8 +1,10 @@
+/* eslint-disable linebreak-style */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../components/PageDefault/index';
 import FormField from '../../components/FormField';
 import Button from '../../components/Button/index';
+import useForm from '../../hooks/useForm';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -10,22 +12,9 @@ function CadastroCategoria() {
     descricao: '',
     cor: '',
   };
-  const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(valoresIniciais);
 
-  function setValue(chave, valor) {
-    // chave: nome, descrição, etc...
-    setValues({
-      ...values,
-      [chave]: valor,
-    });
-  }
-  function handlerChange(infoDoEvento) {
-    setValue(
-      infoDoEvento.target.getAttribute('name'),
-      infoDoEvento.target.value,
-    );
-  }
+  const { values, handlerChange, clearForm } = useForm(valoresIniciais);
+  const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
     if (window.location.href.includes('localhost')) {
@@ -43,7 +32,7 @@ function CadastroCategoria() {
   }, []);
 
   return (
-    <PageDefault>
+    <PageDefault pddingAll={0}>
       <h1>
         Cadastro De Categoria:
         {values.nome}
@@ -54,7 +43,7 @@ function CadastroCategoria() {
           ...categorias,
           values,
         ]);
-        setValues(valoresIniciais);
+        clearForm(valoresIniciais);
       }}
       >
 
